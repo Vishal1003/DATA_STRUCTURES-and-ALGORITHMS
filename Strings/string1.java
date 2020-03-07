@@ -102,7 +102,7 @@ public class string1 {
 	public static void stringCompression(String str) {
 
 		for (int i = 0; i < str.length(); i++) {
-			int count = 0;
+			int count = 1;
 			for (int j = i + 1; j < str.length(); j++) {
 				if (str.charAt(i) == str.charAt(j)) {
 					count++;
@@ -110,7 +110,13 @@ public class string1 {
 					j = j - 1;
 				}
 			}
-			str = str.substring(i) + count + str.substring(i);
+			if (count > 1) {
+
+				str = str.substring(0, i + 1) + count + str.substring(i + 1);
+
+			}
 		}
+
+		System.out.println(str);
 	}
 }
