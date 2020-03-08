@@ -6,12 +6,17 @@ public class recursion1 {
 
 	public static void main(String[] args) {
 		Scanner scn = new Scanner(System.in);
-		int n = scn.nextInt();
+//		int n = scn.nextInt();
 
 //		PID(n-1);
 //		pattern2(n);
 
-		System.out.println(triangles(n));
+		int[] arr = { 12, 2, 3, 4, 5, 6 };
+//		System.out.println(isSorted(arr, arr.length - 1));
+		
+		System.out.println(search(arr, 6, arr.length-1));
+
+//		System.out.println(triangles(n));
 	}
 
 	public static void PID(int n) {
@@ -63,6 +68,34 @@ public class recursion1 {
 		int ans = triangles(n - 1);
 
 		return ans + n;
+
+	}
+
+	public static boolean isSorted(int[] arr, int n) {
+
+		if (n == 0) {
+			return true;
+		}
+
+		if (isSorted(arr, n - 1)) {
+			if (arr[n - 1] < arr[n])
+				return true;
+		}
+
+		return false;
+
+	}
+
+	public static boolean search(int[] arr, int item, int n) {
+		if (n == 0) {
+			return (arr[n] == item);
+		}
+
+		if (arr[n] == item) {
+			return true;
+		}
+
+		return search(arr, item, n - 1);
 
 	}
 }

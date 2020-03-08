@@ -31,28 +31,32 @@ public class CHPINTU {
 
 			}
 
-			int[] res = new int[m];
+			int[] res = new int[m + 1];
+
+			for (int i = 0; i < res.length; i++) {
+				res[i] = -1;
+
+			}
+			for (int i = 0; i < fr.length; i++) {
+
+				res[fr[i]] = 0;
+			}
 
 			for (int i = 0; i < fr.length; i++) {
 				res[fr[i]] = res[fr[i]] + price[i];
 			}
 
 			int min = Integer.MAX_VALUE;
-			int flag = 0;
 
 			for (int i = 0; i < res.length; i++) {
-				if (res[i] != 0 && res[i] < min) {
+				if (res[i] != -1 && res[i] < min) {
 					min = res[i];
-					flag = 1;
+
 				}
 
 			}
 
-			if (flag == 0) {
-				System.out.println("0");
-			} else {
-				System.out.println(min);
-			}
+			System.out.println(min);
 
 			tc--;
 		}
