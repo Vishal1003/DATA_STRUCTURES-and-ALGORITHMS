@@ -16,7 +16,7 @@ public class LAZER {
 
 	};
 
-	static boolean onSegment(Point p, Point q, Point r) {
+	static boolean collinearity(Point p, Point q, Point r) {
 		if (q.x <= Math.max(p.x, r.x) && q.x >= Math.min(p.x, r.x) && q.y <= Math.max(p.y, r.y)
 				&& q.y >= Math.min(p.y, r.y))
 			return true;
@@ -64,16 +64,16 @@ public class LAZER {
 		if (o1 != o2 && o3 != o4)
 			return true;
 
-		if (o1 == 0 && onSegment(p1, p2, q1))
+		if (o1 == 0 && collinearity(p1, p2, q1))
 			return true;
 
-		if (o2 == 0 && onSegment(p1, q2, q1))
+		if (o2 == 0 && collinearity(p1, q2, q1))
 			return true;
 
-		if (o3 == 0 && onSegment(p2, p1, q2))
+		if (o3 == 0 && collinearity(p2, p1, q2))
 			return true;
 
-		if (o4 == 0 && onSegment(p2, q1, q2))
+		if (o4 == 0 && collinearity(p2, q1, q2))
 			return true;
 
 		return false;

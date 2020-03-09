@@ -34,49 +34,21 @@ public class LAZER_new {
 				int x2 = scn.nextInt();
 				int y = scn.nextInt();
 
-				for (int i = 0; i < arr.length - 1; i++) {
-
-					if (Math.min(i + 1, i + 2) > x2 && Math.min(i + 1, i + 2) > x1) {
-						continue;
+				for (int j = x1; j < x2-1; j++) {
+					if (y >= arr[j] && y <= arr[j]) {
+						count++;
 					}
-
-					if (Math.max(i + 1, i + 2) < x1 && Math.max(i + 1, 1 + 2) < x2)
-						continue;
-
-					if ((arr[i + 1] >= y && arr[i] <= y) || (arr[i + 1] <= y && arr[i] >= y)) {
-
-					}
-
-					System.out.println(count);
-
-					q--;
-
 				}
 
-				tc--;
+				System.out.print(count + "\n");
+
+				q--;
+
 			}
 
+			tc--;
 		}
 
 	}
 
 }
-
-//if (((i + 1) == x2 && arr[i] == y)) {
-//	if ((i + 2) > (i + 1))
-//		continue;
-//}
-//if (((i + 2) == x2 && arr[i + 1] == y)) {
-//	if ((i + 2) < (i + 1))
-//		continue;
-//}
-//
-//if (((i + 2) == x1) && arr[i + 1] == y) {
-//	if ((i + 1) < (i + 2))
-//		continue;
-//}
-//
-//if (((i + 1) == x1) && arr[i] == y) {
-//	if ((i + 1) > (i + 2))
-//		continue;
-//}
