@@ -36,31 +36,15 @@ public class LAZER_new {
 
 				for (int i = 0; i < arr.length - 1; i++) {
 
-					for (int j = x1; j < x2; j++) {
+					if (Math.min(i + 1, i + 2) > x2 && Math.min(i + 1, i + 2) > x1) {
+						continue;
+					}
 
-						if ((arr[i + 1] >= y && arr[i] <= y) || (arr[i + 1] <= y && arr[i] >= y)) {
+					if (Math.max(i + 1, i + 2) < x1 && Math.max(i + 1, 1 + 2) < x2)
+						continue;
 
-							if (((i + 1) == x2 && arr[i] == y)) {
-								if ((i + 2) > (i + 1))
-									continue;
-							}
-							if (((i + 2) == x2 && arr[i + 1] == y)) {
-								if ((i + 2) < (i + 1))
-									continue;
-							}
+					if ((arr[i + 1] >= y && arr[i] <= y) || (arr[i + 1] <= y && arr[i] >= y)) {
 
-							if (((i + 2) == x1) && arr[i + 1] == y) {
-								if ((i + 1) < (i + 2))
-									continue;
-							}
-
-							if (((i + 1) == x1) && arr[i] == y) {
-								if ((i + 1) > (i + 2))
-									continue;
-							}
-							count++;
-
-						}
 					}
 
 					System.out.println(count);
@@ -77,3 +61,22 @@ public class LAZER_new {
 	}
 
 }
+
+//if (((i + 1) == x2 && arr[i] == y)) {
+//	if ((i + 2) > (i + 1))
+//		continue;
+//}
+//if (((i + 2) == x2 && arr[i + 1] == y)) {
+//	if ((i + 2) < (i + 1))
+//		continue;
+//}
+//
+//if (((i + 2) == x1) && arr[i + 1] == y) {
+//	if ((i + 1) < (i + 2))
+//		continue;
+//}
+//
+//if (((i + 1) == x1) && arr[i] == y) {
+//	if ((i + 1) > (i + 2))
+//		continue;
+//}
