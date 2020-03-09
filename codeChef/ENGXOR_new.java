@@ -1,8 +1,9 @@
 package codeChef;
+// path /eclipse-workspace/SelfWork/src
 
 import java.util.Scanner;
 
-public class ENGXOR {
+public class ENGXOR_new {
 
 	public static void main(String args[]) {
 		Scanner scn = new Scanner(System.in);
@@ -33,12 +34,12 @@ public class ENGXOR {
 			int[] ans = new int[n];
 
 			for (int i = 0; i < p.length; i++) {
-				for (int 	j = 0; j < arr.length; j++) {
+				for (int j = 0; j < arr.length; j++) {
 					ans[j] = p[i] ^ arr[j];
 				}
 
 				for (int j = 0; j < ans.length; j++) {
-					ans[j] = decToBinary(ans[j]);
+					ans[j] = count(ans[j]);
 
 				}
 				int even = 0, odd = 0;
@@ -49,7 +50,7 @@ public class ENGXOR {
 						odd++;
 				}
 
-				System.out.print(even + " " + odd+ "\n");
+				System.out.print(even + " " + odd + "\n");
 
 			}
 
@@ -58,34 +59,22 @@ public class ENGXOR {
 
 	}
 
-	public static int decToBinary(int n) {
-		int rem = 0, multi = 1, ans = 0;
+	public static int count(int n) {
 
-		while (n != 0) {
-			rem = n % 2;
-			n = n / 2;
-			ans = rem * multi + ans;
-			multi = 10 * multi;
+		int count1 = 0;
 
-		}
-		int count = 0, last = 0;
-		int temp = ans;
+		while (n > 0) {
 
-		while (temp > 0) {
-			last = temp % 10;
-			if (last == 1) {
-				count++;
-			}
+			int ans = n & 1;
+			if (ans == 1)
+				count1++;
 
-			temp = temp / 10;
-
+			n = n >> 1;
 		}
 
-		if (count % 2 == 0) {
+		if (count1 % 2 == 0) {
 			return 1;
-		}
-
-		else
+		} else
 			return 0;
 
 	}
