@@ -11,7 +11,7 @@ public class LAZER {
 		public Point(int x, int y) {
 			this.x = x;
 			this.y = y;
-			
+
 		}
 
 	};
@@ -119,7 +119,7 @@ public class LAZER {
 					}
 				}
 
-				System.out.println(count);
+				System.out.print(count + "\n");
 
 				q--;
 
