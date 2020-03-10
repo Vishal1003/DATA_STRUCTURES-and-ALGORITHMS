@@ -36,22 +36,10 @@ public class LAZERnew {
 
 				for (int i = 0; i < arr.length - 1; i++) {
 
-					double x = 0.0;
-
 					if (Math.max(arr[i + 1], arr[i]) >= y && Math.min(arr[i + 1], arr[i]) <= y) {
 
-						int slope = arr[i + 1] - arr[i];
-						int constant = (2 + i) * arr[i] - (1 + i) * arr[i + 1];
-
-						if (slope != 0) {
-							x = (y - constant) / slope;
-
-							if (Math.max(i + 1, i + 2) <= x2 && Math.min(i + 1, i + 2) >= x1)
-								count++;
-						} else {
-							if (Math.max(i + 1, i + 2) <= x2 && Math.min(i + 1, i + 2) >= x1)
-								count++;
-						}
+						if (Math.max(i + 1, i + 2) <= x2 && Math.min(i + 1, i + 2) >= x1)
+							count++;
 
 					}
 
