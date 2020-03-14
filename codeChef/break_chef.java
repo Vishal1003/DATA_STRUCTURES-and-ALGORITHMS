@@ -38,10 +38,7 @@ public class break_chef {
 	}
 
 	public static void subtask1(int[] a, int[] b) {
-
 		boolean value = true;
-		int count = 0;
-
 		HashMap<Integer, Boolean> map = new HashMap<Integer, Boolean>();
 
 		if (b[0] <= a[0]) {
@@ -50,31 +47,23 @@ public class break_chef {
 		} else {
 			map.put(a[0], value);
 			map.put(b[0], value);
+			b[0] = 0;
 		}
 
 		for (int i = 1; i < a.length; i++) {
-
+			
 			if (map.containsKey(a[i])) {
-				for (int j = i; j < b.length; j++) {
-					if (b[j] > a[i]) {
-						map.put(b[j], value);
-						count = 1;
-						break;
-					}
-				}
-
-				if (count == 0) {
+				if (b[i] > a[i]) {
+					map.put(b[i], value);
+				} else {
 					System.out.println("NO");
 					return;
 				}
-
 			} else {
 				System.out.println("NO");
 				return;
 			}
-
 		}
-
 		System.out.println("YES");
 
 	}
