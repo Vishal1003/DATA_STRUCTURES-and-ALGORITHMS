@@ -3,15 +3,16 @@ package Recursion;
 public class recursion3 {
 	public static void main(String[] args) {
 
-		String str = "hichighhi";
+		String str = "hichihihicdhicdhighhi";
+		String str1 = "axxxhgh";
 
 //		System.out.println(isReverse(str1, str2, 0));
 //		System.out.println(isPalindrome(str1, 0));
 //		System.out.println(replaceD(str, 0));
 //		System.out.println(reduceD(str, 0));
 
-//		System.out.println(movesX(str, 0, str.length()));
-		System.out.println(countHi(str, 0, 0));
+		System.out.println(movesX(str1, 0, str.length()));
+//		System.out.println(removeHi(str, 0));
 
 //		System.out.println(printSum(str, 0, 0));
 //		System.out.println(convertInt(str, 0, str.length() - 1, 1));
@@ -98,6 +99,7 @@ public class recursion3 {
 
 		if (str.charAt(i) == 'x') {
 			str = str.substring(0, i) + str.substring(i + 1) + 'x';
+			
 		}
 
 		return movesX(str, i + 1, length);
@@ -113,6 +115,24 @@ public class recursion3 {
 		}
 
 		return countHi(str, i + 1, count);
+
+	}
+
+	public static String removeHi(String str, int i) {
+		if (i == str.length() - 1 || i == str.length())
+			return str;
+
+		if (str.charAt(i) == 'h' && str.charAt(i + 1) == 'i') {
+
+			if (i + 2 <= str.length() - 1)
+				str = str.substring(0, i) + str.substring(i + 2);
+			else
+				str = str.substring(0, i);
+
+			i = i - 1;
+		}
+
+		return removeHi(str, i + 1);
 
 	}
 
