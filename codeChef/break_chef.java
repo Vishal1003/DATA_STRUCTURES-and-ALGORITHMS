@@ -1,6 +1,7 @@
 package codeChef;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class break_chef {
@@ -28,15 +29,6 @@ public class break_chef {
 
 			Arrays.sort(a);
 			Arrays.sort(b);
-			
-			for(int val : a) {
-				System.out.print(val+" ");
-			}
-			System.out.println();
-			for(int val : b) {
-				System.out.print(val+" ");
-			}
-			
 
 			subtask1(a, b);
 
@@ -46,8 +38,37 @@ public class break_chef {
 	}
 
 	public static void subtask1(int[] a, int[] b) {
-		for (int i = a.length - 1; i >= 0; i--) {
-			if (b[i] <= a[i]) {
+
+		boolean value = true;
+		int count = 0;
+
+		HashMap<Integer, Boolean> map = new HashMap<Integer, Boolean>();
+
+		if (b[0] <= a[0]) {
+			System.out.println("NO");
+			return;
+		} else {
+			map.put(a[0], value);
+			map.put(b[0], value);
+		}
+
+		for (int i = 1; i < a.length; i++) {
+
+			if (map.containsKey(a[i])) {
+				for (int j = i; j < b.length; j++) {
+					if (b[j] > a[i]) {
+						map.put(b[j], value);
+						count = 1;
+						break;
+					}
+				}
+
+				if (count == 0) {
+					System.out.println("NO");
+					return;
+				}
+
+			} else {
 				System.out.println("NO");
 				return;
 			}
