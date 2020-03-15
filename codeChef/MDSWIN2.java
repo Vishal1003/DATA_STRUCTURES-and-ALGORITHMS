@@ -58,7 +58,31 @@ public class MDSWIN2 {
 						}
 					}
 
-					System.out.println(getTotalWays(pile, mp.size()));
+					int pileSum = 0;
+					int ways = 0;
+					int temp = 0;
+
+					for (int j = 0; j < pile.length; j++) {
+						pileSum = pileSum ^ pile[j];
+					}
+
+					if (pileSum == 0) {
+						System.out.println("0"); // if the pile sum is 0 already then there is no chance that 1st person
+													// can win
+					} else {
+//						if the pile_Sum is not 0 then we have to make it 0 for the next turn						
+
+						for (int index = 0; index < pile.length; index++) {
+							for (int val = 1; val <= pile[index]; val++) {
+								if ((pileSum ^ val) == 0) {
+									ways = nCrModPFermat(n, r, 998244353);
+									System.out.println(ways);
+									break;
+								}
+							}
+						}
+
+					}
 
 					q--;
 				}
@@ -68,28 +92,39 @@ public class MDSWIN2 {
 
 	}
 
-	static int xorArray(int arr[], int n) {
-		int res = 0;
-		for (int i = 0; i < n; i++)
-			res = res ^ arr[i];
+	static int power(int x, int y, int p) {
+
+		
+		int res = 1;
+		x = x % p;
+
+		while (y > 0) {
+			if (y % 2 == 1)
+				res = (res * x) % p;
+			y = y >> 1; 
+			x = (x * x) % p;
+		}
 
 		return res;
 	}
 
-	static int getTotalWays(int arr[], int n) {
-
-		int xorArr = xorArray(arr, n);
-
-		if (xorArr == 0)
-			return 0;
-
-		int numberOfWays = 0;
-
-		for (int i = 0; i < n; i++) {
-			int requiredCoins = xorArr ^ arr[i];
-			if (requiredCoins < arr[i])
-				numberOfWays++;
-		}
-		return numberOfWays;
+	static int modInverse(int n, int p) {
+		return power(n, p - 2, p);
 	}
+
+	static int nCrModPFermat(int n, int r, int p) {
+
+	
+		if (r == 0)
+			return 1;
+
+		int[] fac = new int[n + 1];
+		fac[0] = 1;
+
+		for (int i = 1; i <= n; i++)
+			fac[i] = fac[i - 1] * i % p;
+
+		return (fac[n] * modInverse(fac[r], p) % p * modInverse(fac[n - r], p) % p) % p;
+	}
+
 }
