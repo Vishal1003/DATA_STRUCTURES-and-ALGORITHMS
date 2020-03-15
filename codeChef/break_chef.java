@@ -47,7 +47,7 @@ public class break_chef {
 		} else {
 			map.put(a[0], value);
 			map.put(b[0], value);
-			b[0] = 0;
+			
 		}
 
 		for (int i = 1; i < a.length; i++) {

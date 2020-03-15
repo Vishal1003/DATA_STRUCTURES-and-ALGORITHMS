@@ -16,67 +16,33 @@ public class ENGXOR_new {
 
 			int n = scn.nextInt();
 			int q = scn.nextInt();
+			int even = 0, odd = 0;
 
 			int[] arr = new int[n];
-			int[] p = new int[q];
 
 			for (int i = 0; i < arr.length; i++) {
-				if (scn.hasNextInt())
+				if (scn.hasNextInt()) {
 					arr[i] = scn.nextInt();
-
-			}
-
-			for (int i = 0; i < p.length; i++) {
-				if (scn.hasNextInt())
-					p[i] = scn.nextInt();
-			}
-
-			int[] ans = new int[n];
-
-			for (int i = 0; i < p.length; i++) {
-				for (int j = 0; j < arr.length; j++) {
-					ans[j] = p[i] ^ arr[j];
-				}
-
-				for (int j = 0; j < ans.length; j++) {
-					ans[j] = count(ans[j]);
-
-				}
-				int even = 0, odd = 0;
-				for (int j = 0; j < ans.length; j++) {
-					if (ans[j] == 1) {
+					if (arr[i] % 2 == 0) {
 						even++;
 					} else
 						odd++;
 				}
+			}
+			while (q > 0) {
+				int query = scn.nextInt();
+				if (query % 2 == 0) {
+					System.out.println(even + " " + odd);
+				} else {
+					System.out.println(odd + " " + even);
+				}
 
-				System.out.print(even + " " + odd + "\n");
-
+				q--;
 			}
 
-			tc--;
 		}
 
-	}
-
-	public static int count(int n) {
-
-		int count1 = 0;
-
-		while (n > 0) {
-
-			int ans = n & 1;
-			if (ans == 1)
-				count1++;
-
-			n = n >> 1;
-		}
-
-		if (count1 % 2 == 0) {
-			return 1;
-		} else
-			return 0;
-
+		tc--;
 	}
 
 }
