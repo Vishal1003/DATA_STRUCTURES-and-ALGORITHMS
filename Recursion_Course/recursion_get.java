@@ -12,6 +12,8 @@ public class recursion_get {
 
 	}
 
+//	print Subsequences
+
 	public static ArrayList<String> getSS(String str) {
 
 		if (str.length() == 0) {
@@ -35,6 +37,8 @@ public class recursion_get {
 		return mr;
 
 	}
+
+//	Print Ascii Subsequences
 
 	public static ArrayList<String> getSSAscii(String str) {
 
@@ -60,6 +64,8 @@ public class recursion_get {
 		return mr;
 	}
 
+//	Function to print the permutation of the string.
+
 	public static ArrayList<String> permutation(String str) {
 		if (str.length() == 0) {
 			ArrayList<String> br = new ArrayList<String>();
@@ -83,7 +89,33 @@ public class recursion_get {
 		return mr;
 	}
 
+//	print all the possible paths (diagonals) from current to end
 
-	
+	public static ArrayList<String> boardPath(int curr, int end) {
+
+		if (curr == end) {
+			ArrayList<String> br = new ArrayList<String>();
+			br.add("\n");
+			return br;
+		}
+
+		if (curr > end) {
+			ArrayList<String> nr = new ArrayList<String>();
+			return nr;
+		}
+
+		ArrayList<String> mr = new ArrayList<String>();
+
+		for (int dice = 1; dice <= 6; dice++) {
+			ArrayList<String> rr = boardPath(curr + dice, end);
+
+			for (String val : rr) {
+				mr.add(val + dice);
+			}
+		}
+
+		return mr;
+
+	}
 
 }
