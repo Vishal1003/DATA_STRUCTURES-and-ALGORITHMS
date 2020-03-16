@@ -1,5 +1,6 @@
 package codeChef;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -25,7 +26,7 @@ public class MDSWIN2 {
 
 			int q = scn.nextInt();
 
-			while (q > 0) {
+			for (int query = 0; query < q; query++) {
 
 				Map<Integer, Integer> mp = new HashMap<>();
 				int l = 0, r = 0;
@@ -47,44 +48,30 @@ public class MDSWIN2 {
 						}
 					}
 
-					int[] pile = new int[mp.size()];
-
-					int i = 0;
-
-					for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
-						if (i < pile.length) {
-							pile[i] = entry.getValue();
-							i++;
-						}
-					}
-
 					int pileSum = 0;
 					int ways = 0;
-					int temp = 0;
-
-					for (int j = 0; j < pile.length; j++) {
-						pileSum = pileSum ^ pile[j];
+				
+					for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
+						pileSum = pileSum ^ entry.getValue();
 					}
 
 					if (pileSum == 0) {
 						System.out.println("0"); // if the pile sum is 0 already then there is no chance that 1st person
 													// can win
 					} else {
-//						if the pile_Sum is not 0 then we have to make it 0 for the next turn						
+//						if the pile_Sum is not 0 then we have to make it 0 for the next turn	
 
-						for (int index = 0; index < pile.length; index++) {
-							for (int val = 1; val <= pile[index]; val++) {
-								if ((pileSum ^ val) == 0) {
-									ways = nCrModPFermat(n, r, 998244353);
-									System.out.println(ways);
-									break;
-								}
-							}
+						for (Map.Entry<Integer, Integer> entry : mp.entrySet()) {
+							
+							int xor_curr = entry.getValue() ^ pileSum;
+							if (entry.getValue() > xor_curr)
+								ways = ways + (nCrModp(entry.getValue(), xor_curr, 998244353) % 998244353);
+						
 						}
 
-					}
+						System.out.println(ways);
 
-					q--;
+					}
 				}
 			}
 			tc--;
@@ -92,39 +79,19 @@ public class MDSWIN2 {
 
 	}
 
-	static int power(int x, int y, int p) {
+	static int nCrModp(int n, int r, int p) {
 
-		
-		int res = 1;
-		x = x % p;
+		int C[] = new int[r + 1];
+		Arrays.fill(C, 0);
 
-		while (y > 0) {
-			if (y % 2 == 1)
-				res = (res * x) % p;
-			y = y >> 1; 
-			x = (x * x) % p;
+		C[0] = 1;
+		for (int i = 1; i <= n; i++) {
+
+			for (int j = Math.min(i, r); j > 0; j--)
+
+				C[j] = (C[j] + C[j - 1]) % p;
 		}
-
-		return res;
-	}
-
-	static int modInverse(int n, int p) {
-		return power(n, p - 2, p);
-	}
-
-	static int nCrModPFermat(int n, int r, int p) {
-
-	
-		if (r == 0)
-			return 1;
-
-		int[] fac = new int[n + 1];
-		fac[0] = 1;
-
-		for (int i = 1; i <= n; i++)
-			fac[i] = fac[i - 1] * i % p;
-
-		return (fac[n] * modInverse(fac[r], p) % p * modInverse(fac[n - r], p) % p) % p;
+		return C[r];
 	}
 
 }
