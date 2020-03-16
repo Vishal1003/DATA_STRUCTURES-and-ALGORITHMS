@@ -2,13 +2,16 @@ package Recursion_Course;
 
 import java.util.ArrayList;
 
+import com.sun.tools.javac.code.Attribute.Array;
+
 public class recursion_get {
 
 	public static void main(String[] args) {
 
 //		System.out.println(getSS("abc"));
 //		System.out.println(getSSAscii("ab"));
-		System.out.println(permutation("abc"));
+//		System.out.println(permutation("abc"));
+		System.out.println(boardPath(0, 2));
 
 	}
 
@@ -89,7 +92,7 @@ public class recursion_get {
 		return mr;
 	}
 
-//	print all the possible paths (diagonals) from current to end
+//	print all the possible board paths (diagonals of square mtx) from current to end
 
 	public static ArrayList<String> boardPath(int curr, int end) {
 
@@ -117,5 +120,39 @@ public class recursion_get {
 		return mr;
 
 	}
+
+//	print all the possible board path with initial dice as 1 or 6
+
+	public static ArrayList<String> getBoardPath16(int curr, int end) {
+
+		if (curr == end) {
+			ArrayList<String> br = new ArrayList<String>();
+			br.add("\n");
+			return br;
+		}
+
+		if (curr > end) {
+			ArrayList<String> nr = new ArrayList<String>();
+			return nr;
+		}
+
+		ArrayList<String> mr = new ArrayList<String>();
+
+		for (int dice = 1; dice <= 6; dice++) {
+
+			if ((curr == 0 && (dice == 1 || dice == 6)) || curr != 0) {
+				ArrayList<String> rr = getBoardPath16(curr + dice, end);
+
+				for (String val : rr) {
+					mr.add(val + dice);
+				}
+
+			}
+		}
+
+		return mr;
+	}
+	
+	
 
 }
