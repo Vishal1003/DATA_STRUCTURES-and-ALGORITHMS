@@ -6,7 +6,8 @@ public class recursion_print {
 
 //		printASCII("abc", "");
 //		printSS("abc", "");
-		System.out.println(printPermutation("abc", ""));
+//		System.out.println(printPermutation("abc", ""));
+		System.out.println(printBoardPath(0, 3, ""));
 
 	}
 
@@ -60,7 +61,25 @@ public class recursion_print {
 		return sum;
 
 	}
-	
-//	
+
+//	board path
+	public static int printBoardPath(int curr, int end, String ans) {
+		if (curr == end) {
+			System.out.println(ans + "\n---------------");
+			return 1;
+		}
+
+		if (curr > end) {
+			return 0;
+		}
+
+		int sum = 0;
+
+		for (int dice = 1; dice <= 6; dice++) {
+			sum += printBoardPath(curr + dice, end, ans + dice);
+		}
+
+		return sum;
+	}
 
 }
