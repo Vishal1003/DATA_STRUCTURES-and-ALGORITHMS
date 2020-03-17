@@ -11,7 +11,8 @@ public class recursion_get {
 //		System.out.println(permutation("abc"));
 //		System.out.println(boardPath(0, 2));
 //		System.out.println(mazePath(0, 0, 2, 2));
-		System.out.println(mazePathMM(0, 0, 2, 2));
+//		System.out.println(mazePathMM(0, 0, 2, 2));
+		System.out.println(coinToss(3));
 
 	}
 
@@ -265,4 +266,26 @@ public class recursion_get {
 
 	}
 
+//	print all possible outcomes of n coin tosses
+
+	public static ArrayList<String> coinToss(int n) {
+
+		if (n == 0) {
+			ArrayList<String> br = new ArrayList<>();
+			br.add("");
+			return br;
+		}
+
+		ArrayList<String> rr = coinToss(n - 1);
+
+		ArrayList<String> mr = new ArrayList<String>();
+
+		for (String val : rr) {
+			mr.add("H" + val);
+			mr.add("T" + val);
+		}
+
+		return mr;
+
+	}
 }
