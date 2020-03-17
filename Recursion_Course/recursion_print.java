@@ -4,8 +4,9 @@ public class recursion_print {
 
 	public static void main(String[] args) {
 
-		printASCII("abc", "");
+//		printASCII("abc", "");
 //		printSS("abc", "");
+		System.out.println(printPermutation("abc", ""));
 
 	}
 
@@ -38,5 +39,28 @@ public class recursion_print {
 		printASCII(roq, ans);
 		printASCII(roq, ans + (int) ch);
 	}
+
+//	print permutation
+	public static int printPermutation(String ques, String ans) {
+
+		if (ques.length() == 0) {
+			System.out.println(ans);
+			return 1;
+		}
+
+		int sum = 0;
+
+		for (int i = 0; i < ques.length(); i++) {
+			char ch = ques.charAt(i);
+			String roq = ques.substring(0, i) + ques.substring(i + 1);
+
+			sum += printPermutation(roq, ans + ch);
+		}
+
+		return sum;
+
+	}
+	
+//	
 
 }
