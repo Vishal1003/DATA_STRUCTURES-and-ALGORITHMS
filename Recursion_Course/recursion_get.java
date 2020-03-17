@@ -11,7 +11,7 @@ public class recursion_get {
 //		System.out.println(permutation("abc"));
 //		System.out.println(boardPath(0, 2));
 //		System.out.println(mazePath(0, 0, 2, 2));
-		System.out.println(mazePathD(0, 0, 2, 2));
+		System.out.println(mazePathMM(0, 0, 2, 2));
 
 	}
 
@@ -219,6 +219,46 @@ public class recursion_get {
 
 		for (String val : rrd) {
 			mr.add("D" + val);
+		}
+
+		return mr;
+
+	}
+
+//	print all possible maze path (with moves)
+
+	public static ArrayList<String> mazePathMM(int cr, int cc, int er, int ec) {
+
+		if (cr == er && cc == ec) {
+			ArrayList<String> br = new ArrayList<String>();
+			br.add("\n");
+			return br;
+		}
+
+		ArrayList<String> mr = new ArrayList<String>();
+
+		for (int move = 1; move <= ec - cc; move++) {
+			ArrayList<String> rrh = mazePathMM(cr, cc + move, er, ec);
+
+			for (String val : rrh) {
+				mr.add("H" + move + val);
+			}
+		}
+
+		for (int move = 1; move <= er - cr; move++) {
+			ArrayList<String> rrv = mazePathMM(cr + move, cc, er, ec);
+
+			for (String val : rrv) {
+				mr.add("V" + move + val);
+			}
+		}
+
+		for (int move = 1; move <= ec - cc && move <= er - cr; move++) {
+			ArrayList<String> rrd = mazePathMM(cr + move, cc + move, er, ec);
+
+			for (String val : rrd) {
+				mr.add("D" + move + val);
+			}
 		}
 
 		return mr;
