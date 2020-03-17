@@ -2,8 +2,6 @@ package Recursion_Course;
 
 import java.util.ArrayList;
 
-import com.sun.tools.javac.code.Attribute.Array;
-
 public class recursion_get {
 
 	public static void main(String[] args) {
@@ -11,7 +9,9 @@ public class recursion_get {
 //		System.out.println(getSS("abc"));
 //		System.out.println(getSSAscii("ab"));
 //		System.out.println(permutation("abc"));
-		System.out.println(boardPath(0, 2));
+//		System.out.println(boardPath(0, 2));
+//		System.out.println(mazePath(0, 0, 2, 2));
+		System.out.println(mazePathD(0, 0, 2, 2));
 
 	}
 
@@ -152,7 +152,77 @@ public class recursion_get {
 
 		return mr;
 	}
-	
-	
+
+//	print all the possible maze path (no diagonal)
+
+	public static ArrayList<String> mazePath(int cr, int cc, int er, int ec) {
+
+		if (cr == er && cc == ec) {
+			ArrayList<String> br = new ArrayList<String>();
+			br.add("\n");
+			return br;
+		}
+
+		if (cr > er || cc > ec) {
+			ArrayList<String> nr = new ArrayList<String>();
+			return nr;
+		}
+
+		ArrayList<String> mr = new ArrayList<String>();
+
+		ArrayList<String> rrh = mazePath(cr, cc + 1, er, ec);
+
+		for (String val : rrh) {
+			mr.add("H" + val);
+		}
+
+		ArrayList<String> rrv = mazePath(cr + 1, cc, er, ec);
+
+		for (String val : rrv) {
+			mr.add("V" + val);
+		}
+
+		return mr;
+
+	}
+
+//	print all possible maze path (with diagonal)
+
+	public static ArrayList<String> mazePathD(int cr, int cc, int er, int ec) {
+
+		if (cr == er && cc == ec) {
+			ArrayList<String> br = new ArrayList<String>();
+			br.add("\n");
+			return br;
+		}
+
+		if (cr > er || cc > ec) {
+			ArrayList<String> nr = new ArrayList<String>();
+			return nr;
+		}
+
+		ArrayList<String> mr = new ArrayList<String>();
+
+		ArrayList<String> rrh = mazePathD(cr, cc + 1, er, ec);
+
+		for (String val : rrh) {
+			mr.add("H" + val);
+		}
+
+		ArrayList<String> rrv = mazePathD(cr + 1, cc, er, ec);
+
+		for (String val : rrv) {
+			mr.add("V" + val);
+		}
+
+		ArrayList<String> rrd = mazePathD(cr + 1, cc + 1, er, ec);
+
+		for (String val : rrd) {
+			mr.add("D" + val);
+		}
+
+		return mr;
+
+	}
 
 }
