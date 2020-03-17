@@ -7,7 +7,8 @@ public class recursion_print {
 //		printASCII("abc", "");
 //		printSS("abc", "");
 //		System.out.println(printPermutation("abc", ""));
-		System.out.println(printBoardPath(0, 3, ""));
+//		System.out.println(printBoardPath(0, 3, ""));
+		System.out.println(printMazePathD(0, 0, 2, 2, ""));
 
 	}
 
@@ -82,4 +83,38 @@ public class recursion_print {
 		return sum;
 	}
 
+//	mazePath
+	public static int printMazePath(int cr, int cc, int er, int ec, String ans) {
+		if (cc == ec && cr == er) {
+			System.out.println(ans);
+			return 1;
+		}
+
+		if (cc > ec || cr > er) {
+			return 0;
+		}
+
+		int rh = printMazePath(cr, cc + 1, er, ec, ans + "H");
+		int rv = printMazePath(cr + 1, cc, er, ec, ans + "V");
+
+		return rh + rv;
+	}
+
+//	mazePath Diagonal
+	public static int printMazePathD(int cr, int cc, int er, int ec, String ans) {
+		if (cr == er && cc == ec) {
+			System.out.println(ans);
+			return 1;
+		}
+
+		if (cr > er || cc > ec) {
+			return 0;
+		}
+
+		int rh = printMazePathD(cr, cc + 1, er, ec, ans + "H");
+		int rv = printMazePathD(cr + 1, cc, er, ec, ans + "V");
+		int rd = printMazePathD(cr + 1, cc + 1, er, ec, ans + "D");
+
+		return rh + rv + rd;
+	}
 }
