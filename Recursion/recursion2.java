@@ -22,7 +22,8 @@ public class recursion2 {
 		}
 
 	}
-
+	
+//	first index of an element in array
 	public static int first_index(int[] arr, int item, int i) {
 
 		if (i == arr.length) {
@@ -37,6 +38,7 @@ public class recursion2 {
 
 	}
 
+//	last index of an element in array
 	public static int last_index(int[] arr, int item, int i) {
 
 		if (i == -1)
@@ -49,6 +51,7 @@ public class recursion2 {
 
 	}
 
+//	print all the indices of the element appeared 
 	public static ArrayList<Integer> all_indices(int[] arr, int item, int i, ArrayList<Integer> ans) {
 
 		if (i == arr.length) {
@@ -63,6 +66,7 @@ public class recursion2 {
 
 	}
 
+//	check if the array is palindromic or not
 	public static boolean isPalindrome(int[] arr, int l, int r) {
 		if (l > r) {
 			return true;
@@ -76,6 +80,7 @@ public class recursion2 {
 
 	}
 
+//	reverse an array
 	public static int[] reverseArray(int[] arr, int l, int r) {
 
 		if (l > r) {

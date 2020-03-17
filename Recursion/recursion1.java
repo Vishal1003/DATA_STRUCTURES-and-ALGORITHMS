@@ -19,6 +19,7 @@ public class recursion1 {
 //		System.out.println(triangles(n));
 	}
 
+//	print increasing decreasing
 	public static void PID(int n) {
 		if (n == 0) {
 			return;
@@ -34,6 +35,7 @@ public class recursion1 {
 		}
 	}
 
+//	patterns
 	public static void pattern1(int n) {
 		if (n == 0) {
 			return;
@@ -71,6 +73,7 @@ public class recursion1 {
 
 	}
 
+//	check if array is Sorted using recursion
 	public static boolean isSorted(int[] arr, int n) {
 
 		if (n == 0) {
@@ -86,6 +89,7 @@ public class recursion1 {
 
 	}
 
+//	searching in array using Recusrion
 	public static boolean search(int[] arr, int item, int n) {
 		if (n == 0) {
 			return (arr[n] == item);

@@ -114,6 +114,7 @@ public class Arrays1 {
 
 	}
 
+//	selectionSort
 	public static void selectionSort(int[] arr) {
 		for (int i = 0; i < arr.length; i++) {
 			int min = i;
@@ -135,6 +136,7 @@ public class Arrays1 {
 
 	}
 
+//	insertionSort
 	public static void insertionSort(int[] arr) {
 
 		for (int counter = 1; counter < arr.length; counter++) {
