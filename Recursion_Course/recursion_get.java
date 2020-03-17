@@ -12,7 +12,8 @@ public class recursion_get {
 //		System.out.println(boardPath(0, 2));
 //		System.out.println(mazePath(0, 0, 2, 2));
 //		System.out.println(mazePathMM(0, 0, 2, 2));
-		System.out.println(coinToss(3));
+//		System.out.println(coinToss(3));
+		System.out.println(paranthesis(3));
 
 	}
 
@@ -287,5 +288,28 @@ public class recursion_get {
 
 		return mr;
 
+	}
+
+	public static ArrayList<String> paranthesis(int n) {
+		if (n == 1) {
+			ArrayList<String> br = new ArrayList<String>();
+			br.add("()");
+			return br;
+		}
+
+		ArrayList<String> rr = paranthesis(n - 1);
+
+		ArrayList<String> mr = new ArrayList<String>();
+
+		for (String val : rr) {
+			mr.add("(" + val + ")");
+
+			mr.add("()" + val);
+
+			if (!mr.contains(val + "()")) {
+				mr.add(val + "()");
+			}
+		}
+		return mr;
 	}
 }
