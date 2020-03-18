@@ -18,7 +18,6 @@ public class recursion_get {
 	}
 
 //	print Subsequences
-
 	public static ArrayList<String> getSS(String str) {
 
 		if (str.length() == 0) {
@@ -44,7 +43,6 @@ public class recursion_get {
 	}
 
 //	Print Ascii Subsequences
-
 	public static ArrayList<String> getSSAscii(String str) {
 
 		if (str.length() == 0) {
@@ -70,7 +68,6 @@ public class recursion_get {
 	}
 
 //	Function to print the permutation of the string.
-
 	public static ArrayList<String> permutation(String str) {
 		if (str.length() == 0) {
 			ArrayList<String> br = new ArrayList<String>();
@@ -95,7 +92,6 @@ public class recursion_get {
 	}
 
 //	print all the possible board paths (diagonals of square mtx) from current to end
-
 	public static ArrayList<String> boardPath(int curr, int end) {
 
 		if (curr == end) {
@@ -124,7 +120,6 @@ public class recursion_get {
 	}
 
 //	print all the possible board path with initial dice as 1 or 6
-
 	public static ArrayList<String> getBoardPath16(int curr, int end) {
 
 		if (curr == end) {
@@ -156,7 +151,6 @@ public class recursion_get {
 	}
 
 //	print all the possible maze path (no diagonal)
-
 	public static ArrayList<String> mazePath(int cr, int cc, int er, int ec) {
 
 		if (cr == er && cc == ec) {
@@ -189,7 +183,6 @@ public class recursion_get {
 	}
 
 //	print all possible maze path (with diagonal)
-
 	public static ArrayList<String> mazePathD(int cr, int cc, int er, int ec) {
 
 		if (cr == er && cc == ec) {
@@ -228,7 +221,6 @@ public class recursion_get {
 	}
 
 //	print all possible maze path (with moves)
-
 	public static ArrayList<String> mazePathMM(int cr, int cc, int er, int ec) {
 
 		if (cr == er && cc == ec) {
@@ -268,7 +260,6 @@ public class recursion_get {
 	}
 
 //	print all possible outcomes of n coin tosses
-
 	public static ArrayList<String> coinToss(int n) {
 
 		if (n == 0) {
