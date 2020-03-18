@@ -9,7 +9,8 @@ public class recursion_print {
 //		System.out.println(printPermutation("abc", ""));
 //		System.out.println(printBoardPath(0, 3, ""));
 //		System.out.println(printMazePathD(0, 0, 2, 2, ""));
-		System.out.println(printMazePathDMM(0, 0, 2, 2, ""));
+//		System.out.println(printMazePathDMM(0, 0, 2, 2, ""));
+		printLexicoCount2(1, 100);
 
 	}
 
@@ -142,5 +143,43 @@ public class recursion_print {
 		}
 
 		return sum;
+	}
+
+//	print Lexico Counting starting from same digit
+	public static void printLexicoCount(int curr, int end) {
+
+		if (curr > end) {
+			return;
+		}
+
+		System.out.println(curr);
+
+		int i = 0;
+		if (curr == 0) {
+			i = 1;
+		}
+
+		while (i <= 9) {
+			printLexicoCount(curr * 10 + i, end);
+			i++;
+		}
+
+	}
+
+//	lexicoGraphical printing
+	public static void printLexicoCount2(int curr, int end) {
+		if (curr > end) {
+			return;
+		}
+
+		System.out.println(curr);
+
+		for (int i = 0; i <= 9; i++) {
+			printLexicoCount2(curr * 10 + i, end);
+		}
+
+		if (curr + 1 <= 9) {
+			printLexicoCount2(curr + 1, end);
+		}
 	}
 }
