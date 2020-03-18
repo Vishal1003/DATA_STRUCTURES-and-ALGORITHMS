@@ -182,4 +182,44 @@ public class recursion_print {
 			printLexicoCount2(curr + 1, end);
 		}
 	}
+
+//	permutation with no Duplicates
+	public static int permutationNodp(String ques, String ans) {
+		if (ques.length() == 0) {
+			System.out.println(ans);
+			return 1;
+		}
+
+		int sum = 0;
+		boolean visited[] = new boolean[256];
+
+		for (int i = 0; i < ques.length(); i++) {
+			char ch = ques.charAt(i);
+
+			if (visited[ch]) {
+				continue;
+			}
+
+			String roq = ques.substring(0, i) + ques.substring(i + 1);
+
+			sum += permutationNodp(roq, ans + ch);
+
+			visited[ch] = true;
+		}
+
+		return sum;
+	}
+
+//	coin Toss
+	public static void coinToss(int n, String ans) {
+		if (n == 0) {
+			System.out.println(ans);
+			return;
+		}
+
+		coinToss(n - 1, ans + "H");
+		coinToss(n - 1, ans + "V");
+	}
+
+	
 }
