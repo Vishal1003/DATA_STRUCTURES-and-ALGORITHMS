@@ -19,6 +19,7 @@ public class recursion3 {
 
 	}
 
+//	print the sum of numbers in a string
 	public static int printSum(String str, int sum, int i) {
 		if (i == str.length())
 			return sum;
@@ -30,6 +31,7 @@ public class recursion3 {
 		return printSum(str, sum, i + 1);
 	}
 
+//	convert the string number in an integer number
 	public static int convertInt(String str, int ans, int i, int multiplier) {
 		if (i == -1) {
 			return ans;
@@ -40,6 +42,7 @@ public class recursion3 {
 		return convertInt(str, ans, i - 1, multiplier * 10);
 	}
 
+//	check is string2 is the reverse of string1
 	public static boolean isReverse(String str1, String str2, int i) {
 
 		if (str1.length() != str2.length())
@@ -55,6 +58,7 @@ public class recursion3 {
 		return false;
 	}
 
+//	check if a string is palindrome or not
 	public static boolean isPalindrome(String str, int i) {
 		if (i == (str.length()) / 2) {
 			return true;
@@ -66,7 +70,9 @@ public class recursion3 {
 
 		return false;
 	}
-
+	
+	
+//	replace duplicate character of a string with *
 	public static String replaceD(String str, int i) {
 
 		if (i == str.length() - 1 || i == str.length()) {
@@ -81,6 +87,7 @@ public class recursion3 {
 
 	}
 
+//	reduce the duplicate element
 	public static String reduceD(String str, int i) {
 		if (i == str.length() - 1 || i == str.length())
 			return str;
@@ -92,6 +99,7 @@ public class recursion3 {
 		return reduceD(str, i + 1);
 	}
 
+//	move the character "x" present in a string to end
 	public static String movesX(String str, int i, int length) {
 
 		if (i == length - 1 || i == length)
@@ -106,6 +114,7 @@ public class recursion3 {
 
 	}
 
+//	count the number of times a word appears in a string
 	public static int countHi(String str, int i, int count) {
 		if (i == str.length() - 1)
 			return count;
@@ -118,6 +127,7 @@ public class recursion3 {
 
 	}
 
+//	remove all the occurrences of a word in a string
 	public static String removeHi(String str, int i) {
 		if (i == str.length() - 1 || i == str.length())
 			return str;
