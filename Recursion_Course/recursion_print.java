@@ -8,7 +8,8 @@ public class recursion_print {
 //		printSS("abc", "");
 //		System.out.println(printPermutation("abc", ""));
 //		System.out.println(printBoardPath(0, 3, ""));
-		System.out.println(printMazePathD(0, 0, 2, 2, ""));
+//		System.out.println(printMazePathD(0, 0, 2, 2, ""));
+		System.out.println(printMazePathDMM(0, 0, 2, 2, ""));
 
 	}
 
@@ -116,5 +117,30 @@ public class recursion_print {
 		int rd = printMazePathD(cr + 1, cc + 1, er, ec, ans + "D");
 
 		return rh + rv + rd;
+	}
+
+//	mazePath with moves
+	public static int printMazePathDMM(int cr, int cc, int er, int ec, String ans) {
+		if (cr == er && cc == ec) {
+
+			System.out.println(ans);
+			return 1;
+
+		}
+
+		int sum = 0;
+		for (int move = 1; move <= ec - cc; move++) {
+			sum += printMazePathDMM(cr, cc + 1, er, ec, ans + "H" + move);
+		}
+
+		for (int move = 1; move <= er - cr; move++) {
+			sum += printMazePathDMM(cr + 1, cc, er, ec, ans + "V" + move);
+		}
+
+		for (int move = 1; move <= er - cr && move <= ec - cc; move++) {
+			sum += printMazePathDMM(cr + 1, cc, er, ec, ans + "D" + move);
+		}
+
+		return sum;
 	}
 }
