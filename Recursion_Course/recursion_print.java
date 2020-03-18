@@ -221,5 +221,19 @@ public class recursion_print {
 		coinToss(n - 1, ans + "V");
 	}
 
-	
+// 	coin Toss with no consecutive heads
+	public static void printNoConsHeadToss(int n, String ans, boolean wasHeadIncluded) {
+		if (n == 0) {
+			System.out.println(ans);
+			return;
+		}
+
+		if (wasHeadIncluded) {
+			printNoConsHeadToss(n - 1, ans + "T", false);
+		} else {
+			printNoConsHeadToss(n - 1, ans + "H", true);
+			printNoConsHeadToss(n - 1, ans + "T", false);
+		}
+	}
+
 }
