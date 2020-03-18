@@ -68,4 +68,13 @@
 
 33. mazePath
 34. mazePath Diagonal
+35. mazePath with moves
+36.	print Lexico Counting starting from same digit
 
+37.	lexicoGraphical printing
+38.	permutation with no Duplicates
+39.	coin Toss
+40.	coin Toss with no consecutive heads
+
+41. coin Toss with no consecutive heads and tails
+ 

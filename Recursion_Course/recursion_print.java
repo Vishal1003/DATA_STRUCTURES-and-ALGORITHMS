@@ -222,18 +222,39 @@ public class recursion_print {
 	}
 
 // 	coin Toss with no consecutive heads
-	public static void printNoConsHeadToss(int n, String ans, boolean wasHeadIncluded) {
+	public static void coinTossNoConsecutiveHead(int n, String ans, boolean wasHeadIncluded) {
 		if (n == 0) {
 			System.out.println(ans);
 			return;
 		}
 
 		if (wasHeadIncluded) {
-			printNoConsHeadToss(n - 1, ans + "T", false);
+			coinTossNoConsecutiveHead(n - 1, ans + "T", false);
 		} else {
-			printNoConsHeadToss(n - 1, ans + "H", true);
-			printNoConsHeadToss(n - 1, ans + "T", false);
+			coinTossNoConsecutiveHead(n - 1, ans + "H", true);
+			coinTossNoConsecutiveHead(n - 1, ans + "T", false);
 		}
 	}
 
+//	coin Toss with no consecutive heads and tails
+	public static void coinTossNoConsecutive(int n, String ans, boolean wasHeadIncluded, boolean wasTailIncluded) {
+		if (n == 0) {
+			System.out.println(ans);
+			return;
+		}
+
+		if (wasHeadIncluded == false && wasTailIncluded == false) {
+			coinTossNoConsecutive(n - 1, ans + "H", true, false);
+			coinTossNoConsecutive(n - 1, ans + "T", false, true);
+		}
+
+		if (wasHeadIncluded) {
+			coinTossNoConsecutive(n - 1, ans + "T", false, true);
+		}
+
+		if (wasTailIncluded) {
+			coinTossNoConsecutive(n - 1, ans + "H", true, false);
+		}
+
+	}
 }
