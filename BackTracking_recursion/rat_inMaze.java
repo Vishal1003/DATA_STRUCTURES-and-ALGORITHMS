@@ -5,9 +5,7 @@ public class rat_inMaze {
 	public static void main(String[] args) {
 
 		int[][] maze = { { 0, 1, 0, 0 }, { 0, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 } };
-
 		display(maze);
-
 		System.out.println(blockedMaze(maze, 0, 0, "", new boolean[4][4]));
 
 	}
@@ -50,4 +48,6 @@ public class rat_inMaze {
 
 	}
 
+	
+	
 }
