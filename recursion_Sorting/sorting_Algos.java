@@ -27,7 +27,9 @@ public class sorting_Algos {
 		}
 
 	}
-
+	
+	
+// 	merge Sort
 	public static int[] mergeSort(int[] arr, int lo, int hi) {
 
 		if (lo == hi) {
@@ -90,6 +92,7 @@ public class sorting_Algos {
 
 	}
 
+//	Quick Sort
 	public static void QuickSort(int[] arr, int lo, int hi) {
 		if (lo >= hi) {
 			return;
