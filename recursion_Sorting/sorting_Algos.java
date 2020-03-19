@@ -7,15 +7,23 @@ public class sorting_Algos {
 		int[] arr = { 100, 20, 80, 30, 90, 70, 20 };
 
 		int[] sorted = mergeSort(arr, 0, arr.length - 1);
-		
-		for(int val: arr) {
-			System.out.print(val+" ");
+
+		for (int val : arr) {
+			System.out.print(val + " ");
 		}
-		
+
 		System.out.println("\n-------------------------");
 
 		for (int val : sorted) {
-			System.out.print(val+" ");
+			System.out.print(val + " ");
+		}
+
+		System.out.println("\n-------------------------");
+
+		QuickSort(arr, 0, arr.length - 1);
+		
+		for (int val : arr) {
+			System.out.print(val + " ");
 		}
 
 	}
@@ -67,7 +75,6 @@ public class sorting_Algos {
 				j++;
 				k++;
 			}
-
 		}
 
 		if (j == two.length) {
@@ -77,10 +84,42 @@ public class sorting_Algos {
 				i++;
 				k++;
 			}
-
 		}
 
 		return merged;
+
+	}
+
+	public static void QuickSort(int[] arr, int lo, int hi) {
+		if (lo >= hi) {
+			return;
+		}
+
+		int left = lo, right = hi, mid = (lo + hi) / 2;
+		int pivot = arr[mid];
+
+		while (left <= right) {
+
+			while (arr[left] < pivot) {
+				left++;
+			}
+
+			while (arr[right] > pivot) {
+				right--;
+			}
+
+			if (left <= right) {
+				int temp = arr[left];
+				arr[left] = arr[right];
+				arr[right] = temp;
+
+				left++;
+				right--;
+			}
+		}
+
+		QuickSort(arr, lo, right);
+		QuickSort(arr, left, hi);
 
 	}
 
