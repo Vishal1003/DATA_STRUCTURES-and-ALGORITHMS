@@ -66,7 +66,7 @@ public class Stack {
 	public void display() {
 
 		for (int i = tos; i >= 0; i--) {
-			System.out.print(i + " ");
+			System.out.print(this.data[i] + " ");
 		}
 
 		System.out.println();
