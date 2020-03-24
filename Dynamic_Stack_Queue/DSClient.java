@@ -12,10 +12,26 @@ public class DSClient {
 		ds.push(50);
 		ds.push(60);
 		ds.push(70);
-		ds.display();
+//		ds.display();
+		
+		
+		displayReverse(ds);
 
 	}
 
-	
+	public static void displayReverse(DynamicStack s) throws Exception {
+
+		if (s.size() == 0) {
+			return;
+		}
+
+		int temp = s.pop();
+
+		displayReverse(s);
+
+		System.out.println(temp);
+		s.push(temp);
+
+	}
 
 }
