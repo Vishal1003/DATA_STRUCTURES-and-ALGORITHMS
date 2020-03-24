@@ -1,5 +1,6 @@
 package Dynamic_Stack_Queue;
 
+
 public class DSClient {
 
 	public static void main(String[] args) throws Exception {
@@ -106,5 +107,31 @@ public class DSClient {
 
 	}
 
-	
+//	stockSpan problem
+	public static int[] stockSpan(int[] arr) throws Exception {
+
+		DynamicStack stack = new DynamicStack();
+
+		int[] ans = new int[arr.length];
+
+		for (int i = 0; i < arr.length; i++) {
+
+			while (!stack.isEmpty() && arr[stack.peek()] < arr[i]) {
+				stack.pop();
+			}
+
+			if (stack.isEmpty()) {
+				ans[i] = i + 1;
+			} else {
+				ans[i] = i - stack.peek();
+			}
+
+			stack.push(i);
+
+		}
+
+		return ans;
+
+	}
+
 }
