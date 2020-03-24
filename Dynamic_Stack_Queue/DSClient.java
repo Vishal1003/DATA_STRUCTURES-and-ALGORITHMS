@@ -16,8 +16,6 @@ public class DSClient {
 
 	}
 
-	public static void Stock_Span() {
-
-	}
+	
 
 }
