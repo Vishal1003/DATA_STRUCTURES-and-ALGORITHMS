@@ -21,6 +21,7 @@ public class DQClient {
 
 	}
 
+//	display reverse of queue
 	public static void dispReverse(DynamicQueue q, int count) throws Exception {
 		if (count == q.size()) {
 			return;
@@ -35,6 +36,7 @@ public class DQClient {
 
 	}
 
+//	actual reverse of queue
 	public static void actualReverse(DynamicQueue q) throws Exception {
 		if (q.isEmpty()) {
 			return;
@@ -47,6 +49,39 @@ public class DQClient {
 		q.enqueue(temp);
 
 	}
-	
+
+//	first negative integer in every window of size k
+	public static void firstNegativeInteger(int[] arr, int k) throws Exception {
+
+		DynamicQueue q = new DynamicQueue();
+
+		for (int i = 0; i < k; i++) {
+
+			if (arr[i] < 0) {
+				q.enqueue(i);
+			}
+		}
+
+		for (int i = k; i < arr.length; i++) {
+			if (q.isEmpty())
+				System.out.println("0");
+
+			else
+				System.out.println(arr[q.getFront()]);
+
+			if (!q.isEmpty() && q.getFront() <= i - k)
+				q.dequeue();
+
+			if (arr[i] < 0)
+				q.enqueue(i);
+
+		}
+
+		if (q.isEmpty())
+			System.out.println("0");
+		else
+			System.out.println(arr[q.getFront()]);
+
+	}
 
 }
