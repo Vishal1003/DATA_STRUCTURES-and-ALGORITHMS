@@ -46,7 +46,25 @@ public class LinkedList {
 
 		return this.tail.data;
 	}
-	
-	
+
+	public int getAt(int idx) throws Exception {
+
+		if (isEmpty()) {
+			throw new Exception("LL is Empty");
+		}
+
+		if (idx < 0 || idx >= this.size) {
+			throw new Exception("indexOutOfBound");
+		}
+
+		node temp = head;
+
+		for (int i = 0; i < idx; i++) {
+			temp = temp.next;
+		}
+
+		return temp.data;
+
+	}
 
 }
