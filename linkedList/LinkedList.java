@@ -22,13 +22,29 @@ public class LinkedList {
 	private int size;
 
 	public int size() {
-		
 		return this.size;
 	}
 
 	public boolean isEmpty() {
-
 		return this.size == 0;
+	}
+
+	public int getFirst() throws Exception {
+
+		if (isEmpty()) {
+			throw new Exception("LL is empty");
+		}
+
+		return this.head.data;
+	}
+
+	public int getLast() throws Exception {
+
+		if (isEmpty()) {
+			throw new Exception("LL is empty");
+		}
+
+		return this.tail.data;
 	}
 	
 	
