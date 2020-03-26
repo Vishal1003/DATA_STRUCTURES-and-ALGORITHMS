@@ -67,4 +67,53 @@ public class LinkedList {
 
 	}
 
+	private node getNodeAt(int idx) throws Exception {
+
+		if (isEmpty()) {
+			throw new Exception("LL is empty");
+		}
+
+		if (idx < 0 || idx >= this.size) {
+			throw new Exception("indexOutOfBound");
+		}
+
+		node temp = head;
+		for (int i = 0; i < idx; i++) {
+			temp = temp.next;
+		}
+
+		return temp;
+
+	}
+
+	public void display() {
+		node temp = this.head;
+
+		while (temp != null) {
+			System.out.println(temp.data + " ");
+			temp = temp.next;
+		}
+
+	}
+
+	public void addLast(int item) {
+
+		node nn = new node();
+		nn.data = item;
+		nn.next = null;
+
+		if (!isEmpty()) {
+			this.tail.next = nn;
+		}
+
+		if (isEmpty()) {
+			this.head = nn;
+			this.tail = nn;
+			this.size++;
+		} else {
+			this.tail = nn;
+			this.size++;
+		}
+
+	}
 }
