@@ -123,16 +123,44 @@ public class LinkedList {
 		nn.data = item;
 		nn.next = null;
 
+		nn.next = head;
+
 		if (this.size == 0) {
 			this.head = nn;
 			this.tail = nn;
 			this.size++;
 		} else {
-			nn.next = head;
+
 			this.head = nn;
 			this.size++;
 		}
 
 	}
-	
+
+	public void addAt(int idx, int item) throws Exception {
+
+		if (idx < 0 || idx >= 0) {
+			throw new Exception("indexOutOfBound");
+		}
+
+		if (idx == 0) {
+			addFirst(item);
+		} else if (idx == this.size) {
+			addLast(item);
+		}
+
+		else {
+
+			node nn = new node();
+			nn.data = item;
+			nn.next = null;
+
+			node nm1 = this.getNodeAt(idx - 1);
+			nn.next = nm1.next;
+			nm1.next = nn;
+			this.size++;
+
+		}
+
+	}
 }
