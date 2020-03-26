@@ -116,4 +116,23 @@ public class LinkedList {
 		}
 
 	}
+
+	public void addFirst(int item) {
+
+		node nn = new node();
+		nn.data = item;
+		nn.next = null;
+
+		if (this.size == 0) {
+			this.head = nn;
+			this.tail = nn;
+			this.size++;
+		} else {
+			nn.next = head;
+			this.head = nn;
+			this.size++;
+		}
+
+	}
+	
 }
