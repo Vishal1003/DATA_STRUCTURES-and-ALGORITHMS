@@ -163,4 +163,47 @@ public class LinkedList {
 		}
 
 	}
+
+	public int removeLast() throws Exception {
+
+		if (this.size == 0) {
+			throw new Exception("LL is empty");
+		}
+
+		int rv = this.tail.data;
+		if (this.size == 1) {
+			this.head = null;
+			this.tail = null;
+			this.size = 0;
+		} else {
+
+			node sm2 = getNodeAt(size - 2);
+			this.tail = sm2;
+			sm2.next = null;
+			this.size--;
+		}
+
+		return rv;
+
+	}
+
+	public int removeFirst() throws Exception {
+
+		if (this.isEmpty()) {
+			throw new Exception("LL is empty");
+		}
+
+		int rv = this.head.data;
+		if (this.size == 1) {
+			this.head = null;
+			this.tail = null;
+			this.size = 0;
+		} else {
+			this.head = this.head.next;
+			this.size--;
+		}
+
+		return rv;
+
+	}
 }
