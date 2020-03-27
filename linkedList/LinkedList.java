@@ -206,4 +206,26 @@ public class LinkedList {
 		return rv;
 
 	}
+
+	public int removeAt(int idx) throws Exception {
+
+		if (idx < 0 || idx >= this.size) {
+			throw new Exception("Index out of bound");
+		}
+
+		if (idx == 0) {
+			return removeFirst();
+		} else if (idx == this.size) {
+			return removeLast();
+		} else {
+			node nm1 = getNodeAt(idx - 1);
+			node n = nm1.next;
+			node np1 = n.next;
+
+			nm1.next = np1;
+			this.size--;
+			return n.data;
+		}
+
+	}
 }
