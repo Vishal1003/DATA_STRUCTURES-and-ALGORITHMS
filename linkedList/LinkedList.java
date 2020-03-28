@@ -228,4 +228,46 @@ public class LinkedList {
 		}
 
 	}
+
+//	reverse data iteratively
+	public void reverseDataIter() throws Exception {
+
+		int left = 0;
+		int right = this.size - 1;
+
+		while (left < right) {
+
+			node ln = getNodeAt(left);
+			node rn = getNodeAt(right);
+			int temp = ln.data;
+			ln.data = rn.data;
+			rn.data = temp;
+
+			left++;
+			right++;
+
+		}
+
+	}
+
+//	reverse pointer iteratively
+	public void reversePtrIter() throws Exception {
+
+		node prev = this.head;
+		node curr = this.head.next;
+
+		while (curr != null) {
+			node ahead = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = ahead;
+		}
+
+		node temp = this.head;
+		this.head = this.tail;
+		this.tail = temp;
+
+		this.tail.next = null;
+
+	}
 }
