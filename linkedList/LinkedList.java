@@ -270,4 +270,46 @@ public class LinkedList {
 		this.tail.next = null;
 
 	}
+
+//	reverse pointer recursively
+	public void reversePtrRec() {
+		reversePtrRec(this.head, this.head.next);
+
+		node temp = this.head;
+		this.head = this.tail;
+		this.tail = temp;
+	}
+
+	private void reversePtrRec(node prev, node curr) {
+
+		if (curr == null) {
+			return;
+		}
+
+		reversePtrRec(curr, curr.next);
+		curr.next = prev;
+
+	}
+
+//	reverse data recursively
+	public void recDataRec() {
+		recDataRec(this.head, this.head, 0);
+	}
+
+	private node recDataRec(node left, node right, int count) {
+
+		if (right == null) {
+			return left;
+		}
+
+		left = recDataRec(left, right.next, count + 1);
+
+		if (count >= this.size / 2) {
+			int temp = left.data;
+			left.data = right.data;
+			right.data = temp;
+		}
+
+		return left.next;
+	}
 }
