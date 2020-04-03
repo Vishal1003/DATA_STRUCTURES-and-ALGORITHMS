@@ -1,0 +1,27 @@
+{
+    "files.associations": {
+        "*.tcc": "cpp",
+        "bitset": "cpp",
+        "chrono": "cpp",
+        "complex": "cpp",
+        "cstdlib": "cpp",
+        "string": "cpp",
+        "exception": "cpp",
+        "cmath": "cpp",
+        "functional": "cpp",
+        "fstream": "cpp",
+        "future": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "mutex": "cpp",
+        "new": "cpp",
+        "ostream": "cpp",
+        "ratio": "cpp",
+        "shared_mutex": "cpp",
+        "sstream": "cpp",
+        "regex": "cpp",
+        "tuple": "cpp",
+        "typeinfo": "cpp",
+        "utility": "cpp"
+    }
+}
