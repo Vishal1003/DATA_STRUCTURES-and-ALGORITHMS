@@ -1,0 +1,160 @@
+1. Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
+
+You should try to do it in place. The program should run in O(1) space complexity and O(nodes) time complexity.
+
+Example 1:
+
+Input: 1->2->3->4->5->NULL
+Output: 1->3->5->2->4->NULL
+
+Solution:
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        
+        ListNode tail = head;
+        if(head == null){
+            return head;
+        }
+        
+        int count = 1;
+        
+        while(tail.next != null){
+            tail = tail.next;
+            count++;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head.next;
+        
+        for(int i=1;i<=count;i++){
+            
+            if(i % 2 == 0){
+                
+                System.out.println(i);
+                // break the link and connect next pointer
+                if(fast.next != null){
+                    slow.next = fast.next;
+                    slow = slow.next;
+                }
+                
+                tail.next = fast;
+                fast = slow.next;
+                tail = tail.next;
+                
+                tail.next = null;
+    
+            }
+	}
+	return head;
+        
+    }
+}
+		***********************************************
+
+2. Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
+
+Note: Do not modify the linked list.
+
+ 
+
+Example 1:
+
+Input: head = [3,2,0,-4], pos = 1
+Output: tail connects to node index 1
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+SOLUTION:
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode detectCycle(ListNode h) {
+        
+       
+        HashSet<ListNode> s = new HashSet<ListNode>(); 
+        ListNode prev = null; 
+        while (h != null) { 
+            
+            if (s.contains(h)) { 
+                return h; 
+            } 
+  
+            else { 
+                s.add(h); 
+                prev = h; 
+                h = h.next; 
+            } 
+        } 
+        return null; 
+    
+        
+    }
+}
+
+
+***********************************************************************
+
+3. Write a program to find the node at which the intersection of two singly linked lists begins.
+
+SOLUTION:
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        
+         Set<ListNode> nodes = new HashSet<>();
+        ListNode pa = headA;
+        while (pa != null) {
+            nodes.add(pa);
+            pa = pa.next;
+        }
+        if (nodes.isEmpty()) {
+            return null;
+        }
+        ListNode pb = headB;
+        while (pb != null) {
+            if (nodes.contains(pb)) {
+                return pb;
+            }
+            pb = pb.next;
+        }
+        return null;
+        
+        
+    }
+}
+
+
+***********************************************************************
