@@ -6,15 +6,14 @@ public class AVLclient {
 
 		AVLTree at = new AVLTree();
 
-		at.insert(20);
-		at.insert(25);
-		at.insert(30);
+		at.insert(34);
+		at.insert(21);
 		at.insert(10);
-		at.insert(5);
-		at.insert(15);
 		at.insert(27);
-		at.insert(19);
-		at.insert(16);
+		at.insert(24);
+		at.insert(43);
+		at.insert(15);
+		at.insert(6);
 		
 		at.display();
 
